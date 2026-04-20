@@ -1,147 +1,193 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Zero Trust: From Network Perimeters to a Security Mindset</title>
-  <meta name="description" content="A personal perspective on the history and evolution of Zero Trust." />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<article>
 
-  <style>
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: #030712;
-      color: #e5e7eb;
-      line-height: 1.8;
-      margin: 0;
-      padding: 80px 24px;
-    }
+<h1>Zero Trust: From Network Perimeters to a Security Mindset</h1>
 
-    article {
-      max-width: 860px;
-      margin: 0 auto;
-    }
+<p>
+Zero Trust is a term I hear almost daily. Sometimes it is used to describe a product,
+sometimes a framework, and sometimes simply “MFA everywhere”.
+</p>
 
-    h1, h2, h3 {
-      letter-spacing: -0.02em;
-    }
+<p>
+In my experience, most disagreements about Zero Trust come down to one thing:
+confusing <em>controls</em> with <em>mindset</em>.
+</p>
 
-    h1 {
-      font-size: 2.6rem;
-      margin-bottom: 24px;
-    }
+<p>
+This post is my take on where Zero Trust came from, why it emerged, and how it evolved
+into the security approach I rely on today.
+</p>
 
-    h2 {
-      margin-top: 48px;
-    }
+<h2>The perimeter era</h2>
 
-    p {
-      color: #d1d5db;
-    }
-
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-
-<body>
-  <article>
-   Zero Trust: From Network Perimeters to a Security Mindset
-Zero Trust is a term I hear almost daily.
-Sometimes it’s used to describe a product, sometimes a framework, and sometimes just “MFA everywhere”.
-In my experience, most disagreements about Zero Trust come from one simple issue:
-people confuse controls with mindset.
-This post is my take on where Zero Trust came from, why it emerged, and how it has evolved into the security approach I use today.
-
-Life behind the perimeter
+<p>
 Early in my career, security architectures were built around a very clear assumption:
+</p>
 
+<blockquote>
 If you are inside the network, you are trusted.
+</blockquote>
 
-Firewalls, VPNs, and network segmentation did the heavy lifting. Once users or systems were “in”, they usually had broad access. Security was primarily about preventing initial access.
-At the time, that approach made sense:
+<p>
+Firewalls, VPNs, and network segmentation did the heavy lifting.
+Once users or systems were considered “inside”, they typically had broad access.
+Security focused primarily on preventing initial access.
+</p>
 
-applications lived in datacenters
-users were on corporate networks
-devices were owned and managed by IT
+<p>
+At the time, this made sense:
+cloud was limited, applications lived in datacenters,
+users worked on corporate networks, and devices were owned and managed by IT.
+</p>
 
-The problem was not that the model was wrong — it was that the world changed.
+<div class="diagram">
+  <div class="box">Internet</div>
+  <div class="arrow">⬇</div>
+  <div class="box">Firewall / VPN</div>
+  <div class="arrow">⬇</div>
+  <div class="box">Internal network<br>(implicitly trusted)</div>
+</div>
 
-When implicit trust becomes the problem
-As cloud services, SaaS platforms, and remote work became the norm, the perimeter started to dissolve.
-What I repeatedly saw in incidents and breach reports followed the same pattern:
+<p>
+The problem was not that the architecture was poorly designed —
+it was that the assumptions behind it did not survive the modern IT landscape.
+</p>
 
-stolen credentials
-initial access that looked legitimate
-lateral movement with very few obstacles
-impact far beyond the original compromise
+<h2>When implicit trust becomes the problem</h2>
 
+<p>
+As organizations adopted cloud services, SaaS platforms, and remote work,
+the network perimeter slowly dissolved.
+</p>
+
+<p>
+In incidents and breach reports I have studied, the pattern was often the same:
+stolen credentials, initial access that looked legitimate, followed by lateral
+movement with very few obstacles.
+</p>
+
+<p>
 The painful lesson was consistent:
-trust based on location scales very badly.
-Once attackers were “inside”, the architecture often helped them rather than slowed them down.
+<strong>trust based on location scales very badly</strong>.
+</p>
 
-The idea behind Zero Trust
-Zero Trust flips the old assumption on its head:
+<p>
+Once attackers were “inside”, the architecture often helped them
+more than it slowed them down.
+</p>
 
+<h2>The idea behind Zero Trust</h2>
+
+<p>
+Zero Trust challenges the old assumption entirely:
+</p>
+
+<blockquote>
 Never trust implicitly. Always verify.
+</blockquote>
 
-Instead of asking “Where is the request coming from?”, the focus shifts to:
+<p>
+Instead of asking <em>“Where is the request coming from?”</em>,
+the focus shifts to:
+</p>
 
-who is making the request
-from what device
-to which resource
-under what conditions
-and with what level of risk
+<ul>
+  <li>who is making the request</li>
+  <li>from what device</li>
+  <li>to which resource</li>
+  <li>under what conditions</li>
+  <li>and with what level of risk</li>
+</ul>
 
-In my view, this is where Zero Trust becomes valuable — not as a checklist, but as a way to reason about access.
+<div class="diagram">
+  <div class="box">User / device</div>
+  <div class="arrow">⬇ Continuous verification</div>
+  <div class="box">Identity</div>
+  <div class="box">Device health</div>
+  <div class="box">Context & risk</div>
+  <div class="arrow">⬇</div>
+  <div class="box">Application / Data</div>
+</div>
 
-Not a product, not a destination
-One of the biggest mistakes I still see is treating Zero Trust as something you can “implement and be done with”.
+<p>
+In my view, this is where Zero Trust becomes truly valuable —
+not as a checklist, but as a way to reason about access decisions.
+</p>
+
+<h2>Not a product, not a destination</h2>
+
+<p>
+One of the biggest mistakes I still see is treating Zero Trust
+as something you can “implement and be done with”.
+</p>
+
+<p>
 Zero Trust is:
+</p>
 
-not a single tool
-not a finished state
-not something you buy once
+<ul>
+  <li>not a single tool</li>
+  <li>not a checkbox</li>
+  <li>not a finished state</li>
+</ul>
 
-It is an architectural approach that influences how systems are designed, integrated, and operated over time.
-The principles are fairly stable:
+<p>
+It is an architectural and operational mindset that influences how systems
+are designed, integrated, and operated over time.
+</p>
 
-continuous verification
-least privilege
-assume breach
-reduce blast radius
-visibility everywhere
+<h2>How Zero Trust evolved in practice</h2>
 
-How those principles are applied will always depend on the organization, maturity level, and risk appetite.
+<p>
+Over time, Zero Trust expanded beyond identity alone.
+</p>
 
-How Zero Trust evolved in practice
-Over time, Zero Trust grew beyond identity alone.
-In environments I’ve worked with, a practical Zero Trust architecture usually spans:
+<p>
+In environments I have worked with, a practical Zero Trust approach usually spans:
+</p>
 
-Identity – authentication, access decisions, and governance
-Devices – health, compliance, and workload identity
-Applications – exposure management and access boundaries
-Data – classification, protection, and policy enforcement
-Infrastructure – segmentation, monitoring, and continuous assessment
+<ul>
+  <li><strong>Identity</strong> – authentication, access decisions, and governance</li>
+  <li><strong>Devices</strong> – health, compliance, and workload identity</li>
+  <li><strong>Applications</strong> – access boundaries and exposure management</li>
+  <li><strong>Data</strong> – classification, protection, and policy enforcement</li>
+  <li><strong>Infrastructure</strong> – segmentation, monitoring, and visibility</li>
+</ul>
 
+<p>
 The most important shift is not technical.
-It is the move from one-time decisions to continuous evaluation.
+It is the move from one‑time access decisions to continuous evaluation.
+</p>
 
-Final thoughts
-Zero Trust did not emerge because it was trendy.
+<h2>Final thoughts</h2>
+
+<p>
+Zero Trust did not emerge because it was fashionable.
 It emerged because older trust models failed under modern conditions.
-In my experience, organizations that succeed with Zero Trust accept that:
+</p>
 
-it is a journey, not a milestone
-architecture matters more than tooling
-identity and visibility are foundational
+<p>
+In my experience, organizations that succeed with Zero Trust understand that:
+</p>
 
-At its core, Zero Trust is about removing blind trust from systems that are too complex to fully control.
-  </article>
-</body>
-</html>
+<section class="highlight">
+  <ul>
+    <li>Zero Trust is a journey, not a milestone</li>
+    <li>Architecture matters more than tools</li>
+    <li>Identity and visibility are foundational</li>
+  </ul>
+</section>
+
+<p>
+At its core, Zero Trust is about removing blind trust from systems
+that are too complex to fully control.
+</p>
+
+<p>
+<em>
+Future posts will dive deeper into concrete Zero Trust design patterns,
+common pitfalls, and lessons learned from real‑world implementations.
+</em>
+</p>
+
+</article>
+``
