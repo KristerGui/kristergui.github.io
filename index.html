@@ -5,26 +5,125 @@
   <title>The Architect</title>
   <meta name="description" content="Thoughts and practical insights on cybersecurity, cloud security, identity, architecture, and defense in modern IT environments.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
+    :root {
+      --bg: #f9fafb;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
       max-width: 900px;
       margin: 80px auto;
       padding: 0 24px;
-      line-height: 1.7;
+    }
+
+    header {
+      margin-bottom: 64px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
+  <main class="container">
 
-<h1>The Architect</h1>
+    <header>
+      <h1>The Architect</h1>
+      <p class="tagline">
+        Thoughts and practical insights on cybersecurity, cloud security, identity,
+        architecture, and defense in modern IT environments.
+      </p>
+    </header>
 
-<p><strong>
-Thoughts and practical insights on cybersecurity, cloud security, identity, architecture,
-and defense in modern IT environments.
-</strong></p>
+    <section>
+      <h2>About this blog</h2>
+      <p>
+        This is a personal blog where I write about cybersecurity, cloud platforms,
+        identity, and security architecture — with a strong focus on real‑world
+        experience and practical lessons learned.
+      </p>
+    </section>
 
-<p>A personal blog about cybersecurity, cloud, identity, and security architecture.</p>
+    <section>
+      <h2>Topics</h2>
+      <ul>
+        <li>Cybersecurity & Zero Trust</li>
+        <li>Cloud and identity security</li>
+        <li>Security architecture and design</li>
+        <li>Lessons learned from the field</li>
+      </ul>
+    </section>
 
+    <footer>
+      © The Architect · Built on GitHub Pages
+    </footer>
+
+  </main>
 </body>
 </html>
